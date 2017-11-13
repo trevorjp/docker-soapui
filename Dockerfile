@@ -21,7 +21,9 @@ RUN mkdir -p /opt &&\
     ln -s /opt/SoapUI-${SOAPUI_VERSION} /opt/SoapUI
     
 RUN curl -SL https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.tar.gz \
-    | tar xz mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar --strip-components=1 -C /opt/SoapUI/bin/ext
+    | tar xz mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar --strip-components=1
+    
+COPY mysql-connector-java-5.1.44-bin.jar /opt/SoapUI/bin/ext/mysql-connector-java-5.1.44-bin.jar
 
 # Set working directory
 WORKDIR /opt/bin
