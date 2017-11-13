@@ -5,6 +5,7 @@ MAINTAINER Daniel Davison <sircapsalot@gmail.com>
 
 #  Version
 ENV   SOAPUI_VERSION  5.3.0
+ENV   MYSQL_VERSOIN   5.1.4.4
 
 COPY entry_point.sh /opt/bin/entry_point.sh
 COPY server.py /opt/bin/server.py
@@ -18,6 +19,9 @@ RUN mkdir -p /opt &&\
     curl  http://cdn01.downloads.smartbear.com/soapui/${SOAPUI_VERSION}/SoapUI-${SOAPUI_VERSION}-linux-bin.tar.gz \
     | gunzip -c - | tar -xf - -C /opt && \
     ln -s /opt/SoapUI-${SOAPUI_VERSION} /opt/SoapUI
+    
+RUN curl -SL https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.tar.gz \
+    | tar xz mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar --strip-components=1 -C /opt/SoapUI/bin/ext
 
 # Set working directory
 WORKDIR /opt/bin
