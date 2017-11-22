@@ -62,7 +62,7 @@ class S(BaseHTTPRequestHandler):
             f = open('/tmp/global.properties', 'w')
             print(properties, file=f)
             f.close()
-            arguments.append('-Dsoapui.properties.=/tmp/global.properties')
+            arguments.append('-Dsoapui.properties.Project=/tmp/global.properties')
 
         f = open('/tmp/soapui-project.xml', 'w')
         print(xml, file=f)
